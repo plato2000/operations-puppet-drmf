@@ -19,22 +19,27 @@ class role::drmf {
     }
 
     mediawiki::settings { 'drmf Namspaces':
-        values => ['define("NS_SOURCE", 100);
-        define("NS_SOURCE_TALK", 101);
-        define("NS_FORMULA", 102);
-        define("NS_FORMULA_TALK", 103);
-        define("NS_CD", 104);
-        define("NS_CD_TALK", 105);
+        values => ['
+        // See https://www.mediawiki.org/wiki/Extension_default_namespaces
+        define("NS_SOURCE", 130);
+        define("NS_SOURCE_TALK", 131);
+        define("NS_FORMULA", 132);
+        define("NS_FORMULA_TALK", 133);
+        define("NS_CD", 134);
+        define("NS_CD_TALK", 135);
 
         $wgExtraNamespaces =
-            array(100 => "Source",
-                  101 => "Source_talk",
-                  102 => "FormulaH", //Rename once all pages with Formula prefix are moved
-                  103 => "Formula_talk",
-                  104 => "CD",
-                  105 => "CD_talk",
-            );'],
-        priority => 20
+            array(NS_SOURCE => "Source",
+                  NS_SOURCE_TALK => "Source_talk",
+                  NS_FORMULA => "FormulaH", //Rename once all pages with Formula prefix are moved
+                  NS_FORMULA_TALK => "Formula_talk",
+                  NS_CD => "CD",
+                  NS_CD_TALK => "CD_talk",
+            );
+
+        $smwgNamespacesWithSemanticLinks[NS_FORMULA] = true;
+        $smwgNamespacesWithSemanticLinks[NS_CD] = true;'],
+        priority => 5
     }
     mediawiki::extension { 'Lockdown':
         settings => {
