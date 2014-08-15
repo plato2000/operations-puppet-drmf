@@ -23,18 +23,23 @@ class role::drmf {
         define("NS_SOURCE_TALK", 101);
         define("NS_FORMULA", 102);
         define("NS_FORMULA_TALK", 103);
+        define("NS_CD", 104);
+        define("NS_CD_TALK", 105);
 
         $wgExtraNamespaces =
             array(100 => "Source",
                   101 => "Source_talk",
-                  102 => "FormulaH",
+                  102 => "FormulaH", //Rename once all pages with Formula prefix are moved
                   103 => "Formula_talk",
+                  104 => "CD",
+                  105 => "CD_talk",
             );'],
         priority => 20
     }
     mediawiki::extension { 'Lockdown':
         settings => {
-        'wgNamespacePermissionLockdown[NS_SOURCE][\'read\']' => ['user'],
+        'wgNamespacePermissionLockdown[NS_SOURCE][\'read\']'=> ['user'],
+        'wgNamespacePermissionLockdown[NS_CD][\'read\']'    => ['user'],
         }
     }
     mediawiki::extension { 'FlaggedRevs':
