@@ -25,7 +25,7 @@ class role::drmf {
         priority => 20
     }
 
-    mediawiki::settings { 'drmf Namspaces':
+    mediawiki::settings { 'drmf Namespaces':
         values => ['
         // See https://www.mediawiki.org/wiki/Extension_default_namespaces
         define("NS_SOURCE", 130);
@@ -38,7 +38,7 @@ class role::drmf {
         $wgExtraNamespaces =
             array(NS_SOURCE => "Source",
                   NS_SOURCE_TALK => "Source_talk",
-                  NS_FORMULA => "FormulaH", //Rename once all pages with Formula prefix are moved
+                  NS_FORMULA => "Formula", 
                   NS_FORMULA_TALK => "Formula_talk",
                   NS_CD => "CD",
                   NS_CD_TALK => "CD_talk",
@@ -96,7 +96,7 @@ $wgHooks[\'MathFormulaRendered\'] = array (\'wfOnMathFormulaRendered\');
     #}
 mediawiki::extension{ 'SemanticMediaWiki':
    composer => true,
-   needsupdate => true,
+   needs_update => true,
 }
 
 
