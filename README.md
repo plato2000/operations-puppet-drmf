@@ -27,7 +27,14 @@ git submodule init && git submodule update
 Create a link to to the puppet role:
 
 ```bash
-ln -s ln -s /vagrant/puppet/modules/drmf/manifests/roles/drmf.pp /vagrant/puppet/modules/role/manifests/drmf.pp
+ln -s /vagrant/puppet/modules/drmf/manifests/roles/drmf.pp /vagrant/puppet/modules/role/manifests/drmf.pp
 ```
 
-(PS: The last step is a temporary workaround.)
+and enable the newly created drmf role via
+```
+labs-vagrant enable-role drmf && labs-vagrant provision
+
+```
+
+
+(PS: The last step with the symbolic link is temporary workaround.)
