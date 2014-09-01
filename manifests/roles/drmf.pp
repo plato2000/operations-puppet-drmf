@@ -109,8 +109,9 @@ mediawiki::extension{ 'SemanticMediaWiki':
       },
       require =>  File[ '/srv/vagrant/settings.d/DrmfUserWhitelist.txt' ],
     }
-    #mediawiki::extension{ 'ParserFunctions': }
-    #mediawiki::extension {'SemanticResultFormats': }
+    mediawiki::extension{ 'ParserFunctions': }
+    mediawiki::extension{ 'DataTransfer': }
+    mediawiki::extension {'SemanticResultFormats': }
     #mediawiki::extension{ 'DynamicPageList': }
     #mediawiki::extension{ 'NukeDPL':
     #  require      => Mediawiki::Extension['DynamicPageList'],
