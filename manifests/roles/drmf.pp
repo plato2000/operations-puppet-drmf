@@ -79,9 +79,6 @@ $wgHooks[\'MathFormulaRendered\'] = array (\'wfOnMathFormulaRendered\');
         'wgGroupPermissions[\'sysop\'][\'review\']' => true, #allow administrators to review revisions
         }
     }
-    mediawiki::extension{ 'DataTransfer':
-
-    }
 
     file { '/srv/vagrant/settings.d/DrmfUserWhitelist.txt':
       content => template( '/vagrant/puppet/modules/drmf/templates/DrmfUserWhitelist.txt.erb' ),
