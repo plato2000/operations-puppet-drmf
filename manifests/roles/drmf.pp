@@ -113,4 +113,21 @@ mediawiki::extension{ 'SemanticMediaWiki':
     #mediawiki::extension{ 'NukeDPL':
     #  require      => Mediawiki::Extension['DynamicPageList'],
    #}
+
+## BASEX Backend
+  package { [
+    'openjdk-7-jdk',
+    'maven',
+  ]:
+  }
+  git::clone { 'basex-backend':
+    remote    => 'https://github.com/physikerwelt/mathsearch-backend-basex',
+    directory => '/vagrant/mathsearch-backend-basex',
+  }
+  exec { 'build basex-backend':
+    command => '/usr/bin/mvn install -Dgpg.skip=true',
+    cwd => '/vagrant/mathsearch-backend-basex',
+    require => Git::Clone['basex-backend'],
+
+  }
 }
