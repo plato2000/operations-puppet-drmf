@@ -1,32 +1,32 @@
 # == Class: role::drmf ==
 class role::drmf {
-    include role::mathsearch
+  include role::mathsearch
 
-    mediawiki::settings { 'drmf math':
-        priority => 30,
-        values => {
-        'wgMathDisableTexFilter' => true,
-        'wgUseMathJax'           => true, # enabeling MathJax as rendering option
-        'wgDefaultUserOptions[\'mathJax\']' => true, #setting MathJax as default rendering option (optional)
-        'wgLaTeXMLServer'       => 'http://gw125.iu.xsede.org:8888',
-        'wgMathDefaultLaTeXMLSetting[\'preload\'][]' => 'DLMFmath.sty',
-        'wgCapitalLinks' => false,
-        },
-    }
+  mediawiki::settings { 'drmf math':
+    priority => 30,
+    values   => {
+      'wgMathDisableTexFilter' => true,
+      'wgUseMathJax'           => true, # enabeling MathJax as rendering option
+      'wgDefaultUserOptions[\'mathJax\']' => true, #setting MathJax as default rendering option (optional)
+      'wgLaTeXMLServer'       => 'http://gw125.iu.xsede.org:8888',
+      'wgMathDefaultLaTeXMLSetting[\'preload\'][]' => 'DLMFmath.sty',
+      'wgCapitalLinks' => false,
+    },
+  }
 
-    mediawiki::settings { 'drmf security':
-      values => {
-        'wgGroupPermissions[\'*\'][\'edit\']' => false,
-        'wgGroupPermissions[\'*\'][\'createaccount\']' => false,
-      },
-    }
-    mediawiki::settings { 'drmf remove texvc':
-        values => ['$wgMathDefaultLaTeXMLSetting[\'preload\'] = array_diff( $wgMathDefaultLaTeXMLSetting[\'preload\'], [\'texvc\'] )'],
-        priority => 20
-    }
+  mediawiki::settings { 'drmf security':
+    values => {
+      'wgGroupPermissions[\'*\'][\'edit\']' => false,
+      'wgGroupPermissions[\'*\'][\'createaccount\']' => false,
+    },
+  }
+  mediawiki::settings { 'drmf remove texvc':
+    values   => ['$wgMathDefaultLaTeXMLSetting[\'preload\'] = array_diff( $wgMathDefaultLaTeXMLSetting[\'preload\'], [\'texvc\'] )'],
+    priority => 20
+  }
 
-    mediawiki::settings { 'drmf Namespaces':
-        values => ['
+  mediawiki::settings { 'drmf Namespaces':
+    values   => ['
         // See https://www.mediawiki.org/wiki/Extension_default_namespaces
         define("NS_SOURCE", 130);
         define("NS_SOURCE_TALK", 131);
@@ -65,54 +65,54 @@ function wfOnMathFormulaRendered( MathRenderer $Renderer, &$Result = null, $pid 
 $wgHooks[\'MathFormulaRendered\'] = array (\'wfOnMathFormulaRendered\');
         $smwgNamespacesWithSemanticLinks[NS_FORMULA] = true;
         $smwgNamespacesWithSemanticLinks[NS_CD] = true;'],
-        priority => 5
+    priority => 5
+  }
+  mediawiki::extension { 'Lockdown':
+    settings => {
+      'wgNamespacePermissionLockdown[NS_SOURCE][\'read\']'=> ['user'],
+      'wgNamespacePermissionLockdown[NS_CD][\'read\']'    => ['user'],
     }
-    mediawiki::extension { 'Lockdown':
-        settings => {
-        'wgNamespacePermissionLockdown[NS_SOURCE][\'read\']'=> ['user'],
-        'wgNamespacePermissionLockdown[NS_CD][\'read\']'    => ['user'],
-        }
+  }
+  mediawiki::extension { 'FlaggedRevs':
+    settings => {
+      wgFlaggedRevsStatsAge => false,
+      'wgGroupPermissions[\'sysop\'][\'review\']' => true, #allow administrators to review revisions
     }
-    mediawiki::extension { 'FlaggedRevs':
-        settings => {
-        wgFlaggedRevsStatsAge => false,
-        'wgGroupPermissions[\'sysop\'][\'review\']' => true, #allow administrators to review revisions
-        }
-    }
+  }
 
-    file { '/srv/vagrant/settings.d/DrmfUserWhitelist.txt':
-      content => template( '/vagrant/puppet/modules/drmf/templates/DrmfUserWhitelist.txt.erb' ),
-    }
+  file { '/srv/vagrant/settings.d/DrmfUserWhitelist.txt':
+    content => template( '/vagrant/puppet/modules/drmf/templates/DrmfUserWhitelist.txt.erb' ),
+  }
 
-    #exec { 'smw':
-    #  command     => 'php composer.phar require mediawiki/semantic-media-wiki "~2.0"',
-    #  cwd         => '/vagrant/mediawiki',
-    #  user        => 'root',
-    #  creates => '/vagrant/mediawiki/extensions/SemanticMediawiki',
-    #  require => ''
-    #}
-mediawiki::extension{ 'SemanticMediaWiki':
-   composer => true,
-   needs_update => true,
-}
+#exec { 'smw':
+#  command     => 'php composer.phar require mediawiki/semantic-media-wiki "~2.0"',
+#  cwd         => '/vagrant/mediawiki',
+#  user        => 'root',
+#  creates => '/vagrant/mediawiki/extensions/SemanticMediawiki',
+#  require => ''
+#}
+  mediawiki::extension{ 'SemanticMediaWiki':
+    composer     => true,
+    needs_update => true,
+  }
 
 
-    mediawiki::extension{ 'Nuke': }
+  mediawiki::extension{ 'Nuke': }
 
-    mediawiki::extension{ 'BlockAndNuke':
-      entrypoint => 'BlockandNuke.php',
-      settings => {
-        wgWhitelist => '/srv/vagrant/settings.d/DrmfUserWhitelist.txt'
-      },
-      require =>  File[ '/srv/vagrant/settings.d/DrmfUserWhitelist.txt' ],
-    }
-    mediawiki::extension{ 'ParserFunctions': }
-    mediawiki::extension{ 'DataTransfer': }
-    mediawiki::extension {'SemanticResultFormats': }
-    #mediawiki::extension{ 'DynamicPageList': }
-    #mediawiki::extension{ 'NukeDPL':
-    #  require      => Mediawiki::Extension['DynamicPageList'],
-   #}
+  mediawiki::extension{ 'BlockAndNuke':
+    entrypoint => 'BlockandNuke.php',
+    settings   => {
+      wgWhitelist => '/srv/vagrant/settings.d/DrmfUserWhitelist.txt'
+    },
+    require    =>  File[ '/srv/vagrant/settings.d/DrmfUserWhitelist.txt' ],
+  }
+  mediawiki::extension{ 'ParserFunctions': }
+  mediawiki::extension{ 'DataTransfer': }
+#  mediawiki::extension { 'SemanticResultFormats': } (Seems to be broken at the moment)
+#mediawiki::extension{ 'DynamicPageList': }
+#mediawiki::extension{ 'NukeDPL':
+#  require      => Mediawiki::Extension['DynamicPageList'],
+#}
 
 ## BASEX Backend
   package { [
@@ -126,8 +126,18 @@ mediawiki::extension{ 'SemanticMediaWiki':
   }
   exec { 'build basex-backend':
     command => '/usr/bin/mvn install -Dgpg.skip=true',
-    cwd => '/vagrant/mathsearch-backend-basex',
+    cwd     => '/vagrant/mathsearch-backend-basex',
     require => Git::Clone['basex-backend'],
-
+    creates => '/vagrant/mathsearch-backend-basex/target'
+  }
+  apt::ppa { 'radu-hambasan/math-web-search': }
+  package { [
+    'mws'
+  ]:
+  }
+  exec { 'index formulae':
+    command => '/usr/bin/mws-config create -p 9090 -i /srv/mathsearch/mws-dump/ drmf -e xml && /usr/bin/mws-config enable drmf',
+    require => Package['mws'],
+    creates => '/etc/init.d/mwsd_drmf'
   }
 }
