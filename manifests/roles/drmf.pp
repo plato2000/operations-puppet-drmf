@@ -140,4 +140,10 @@ $wgHooks[\'MathFormulaRendered\'] = array (\'wfOnMathFormulaRendered\');
     require => Package['mws'],
     creates => '/etc/init.d/mwsd_drmf'
   }
+#TODO: Write startup script for basex
+  exec { 'start basex formulae':
+    command => '/usr/bin/mvn package  exec:java -Dpath=/srv/mathsearch/mws-dump/',
+    cwd     => '/vagrant/mathsearch-backend-basex/restd',
+    require => [ Exec['build basex-backend'], Exec['index formulae'] ]
+  }
 }
