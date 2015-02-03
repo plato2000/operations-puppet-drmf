@@ -11,6 +11,7 @@ class role::drmf {
       'wgLaTeXMLServer'       => 'http://gw125.iu.xsede.org:8888',
       'wgMathDefaultLaTeXMLSetting[\'preload\'][]' => 'DLMFmath.sty',
       'wgCapitalLinks' => false,
+      'wgHooks[\'MathFormulaRendered\']' => 'array (\'wfOnMathFormulaRendered\')'
     },
   }
 
@@ -61,8 +62,6 @@ function wfOnMathFormulaRendered( MathRenderer $Renderer, &$Result = null, $pid 
     return true;
 }
 
-
-$wgHooks[\'MathFormulaRendered\'] = array (\'wfOnMathFormulaRendered\');
         $smwgNamespacesWithSemanticLinks[NS_FORMULA] = true;
         $smwgNamespacesWithSemanticLinks[NS_CD] = true;'],
     priority => 5
@@ -141,9 +140,9 @@ $wgHooks[\'MathFormulaRendered\'] = array (\'wfOnMathFormulaRendered\');
     creates => '/etc/init.d/mwsd_drmf'
   }
 #TODO: Write startup script for basex
-  exec { 'start basex formulae':
-    command => '/usr/bin/mvn package  exec:java -Dpath=/srv/mathsearch/mws-dump/',
-    cwd     => '/vagrant/mathsearch-backend-basex/restd',
-    require => [ Exec['build basex-backend'], Exec['index formulae'] ]
-  }
+#  exec { 'start basex formulae':
+ #   command => '/usr/bin/mvn package  exec:java -Dpath=/srv/mathsearch/mws-dump/',
+#    cwd     => '/vagrant/mathsearch-backend-basex/restd',
+ #   require => [ Exec['build basex-backend'], Exec['index formulae'] ]
+  #}
 }
