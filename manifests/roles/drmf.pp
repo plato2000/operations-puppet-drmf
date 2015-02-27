@@ -72,12 +72,12 @@ function wfOnMathFormulaRendered( MathRenderer $Renderer, &$Result = null, $pid 
       'wgNamespacePermissionLockdown[NS_CD][\'read\']'    => ['user'],
     }
   }
-  mediawiki::extension { 'FlaggedRevs':
+/*  mediawiki::extension { 'FlaggedRevs':
     settings => {
       wgFlaggedRevsStatsAge => false,
       'wgGroupPermissions[\'sysop\'][\'review\']' => true, #allow administrators to review revisions
     }
-  }
+  }*/
 
   file { '/srv/vagrant/settings.d/DrmfUserWhitelist.txt':
     content => template( '/vagrant/puppet/modules/drmf/templates/DrmfUserWhitelist.txt.erb' ),
