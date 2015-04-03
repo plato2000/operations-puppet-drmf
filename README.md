@@ -7,6 +7,44 @@ Please do not use it at the moment.
 
 Puppet module to install and configure the software components
 relevant to the Digital Repository of Mathematical Formulae project.
+# Prerequisites
+
+This role requires a vagrant or labs-vagrant instance.
+
+## Creating a labs-vagrant instance
+
+Add a new instance at
+
+ https://wikitech.wikimedia.org/wiki/Special:NovaInstance
+ 
+ 
+by clicking [add instance](https://wikitech.wikimedia.org/w/index.php?title=Special:NovaInstance&action=create&project=math&region=eqiad).
+
+Select the version with 2 CPU and assign a name that begins with drmf.
+
+Wait until the instance status is "ACTIVE" and puppet status is "OK".
+
+Now, click on configure and enable the puppet role ``role::labs::vagrant''.
+
+Log into the instance and force a puppet and labs vagrant run via
+
+```
+sudo puppet agent -tv
+sudo labs-vagrant provision
+```
+This might take some time. In the meantime you can perform the optional step.
+
+(Optional) Add a web-proxy by visiting the Manage proxies page
+
+  https://wikitech.wikimedia.org/wiki/Special:NovaProxy
+  
+and clicking on [create proxy](https://wikitech.wikimedia.org/w/index.php?title=Special:NovaProxy&action=create&project=math&region=eqiad)
+
+Now, you are ready to enable the DRMF role. Follow the instructions below.
+
+In case of problebs visit 
+
+https://wikitech.wikimedia.org/wiki/Labs-vagrant
 
 # Installation
 
