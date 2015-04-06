@@ -20,7 +20,7 @@ Add a new instance at
  
 by clicking [add instance](https://wikitech.wikimedia.org/w/index.php?title=Special:NovaInstance&action=create&project=math&region=eqiad).
 
-Select the version with 2 CPU and assign a name that begins with drmf.
+Select the version with 2 CPUs and assign a name that begins with drmf.
 
 Wait until the instance status is "ACTIVE" and puppet status is "OK".
 
