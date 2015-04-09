@@ -127,12 +127,8 @@ function wfOnMathFormulaRendered( MathRenderer $Renderer, &$Result = null, $pid 
     'mws'
   ]:
   }
-  $directories = split('/srv/mathsearch/mws-dump', '/')
-  each($directories) |$directory| {
-  if ! defined (File[$directory]) {
-    file { $directory: ensure => directory }
-    }
-  }
+  file { ['/srv/mathsearch/','/srv/mathsearch/mws-dump']:
+    ensure => directory }
   
   exec { 'index formulae':
     command => '/usr/bin/mws-config create -p 9090 -i /srv/mathsearch/mws-dump/ drmf -e xml && /usr/bin/mws-config enable drmf',
