@@ -132,9 +132,8 @@ function wfOnMathFormulaRendered( MathRenderer $Renderer, &$Result = null, $pid 
   
   exec { 'index formulae':
     command => '/usr/bin/mws-config create -p 9090 -i /srv/mathsearch/mws-dump/ drmf -e xml && /usr/bin/mws-config enable drmf',
-    require => Package['mws'],
-    creates => '/etc/init.d/mwsd_drmf',
-    require => File['/srv/mathsearch/mws-dump']
+    require => [ Package['mws'], File['/srv/mathsearch/mws-dump'] ],
+    creates => '/etc/init.d/mwsd_drmf'
   }
 #TODO: Write startup script for basex
 #  exec { 'start basex formulae':
