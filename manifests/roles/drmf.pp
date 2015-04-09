@@ -72,24 +72,17 @@ function wfOnMathFormulaRendered( MathRenderer $Renderer, &$Result = null, $pid 
       'wgNamespacePermissionLockdown[NS_CD][\'read\']'    => ['user'],
     }
   }
-/*  mediawiki::extension { 'FlaggedRevs':
+  mediawiki::extension { 'FlaggedRevs':
     settings => {
       wgFlaggedRevsStatsAge => false,
       'wgGroupPermissions[\'sysop\'][\'review\']' => true, #allow administrators to review revisions
     }
-  }*/
+  }
 
   file { '/srv/vagrant/settings.d/DrmfUserWhitelist.txt':
     content => template( '/vagrant/puppet/modules/drmf/templates/DrmfUserWhitelist.txt.erb' ),
   }
 
-#exec { 'smw':
-#  command     => 'php composer.phar require mediawiki/semantic-media-wiki "~2.0"',
-#  cwd         => '/vagrant/mediawiki',
-#  user        => 'root',
-#  creates => '/vagrant/mediawiki/extensions/SemanticMediawiki',
-#  require => ''
-#}
   mediawiki::extension{ 'SemanticMediaWiki':
     composer     => true,
     needs_update => true,
@@ -120,29 +113,37 @@ function wfOnMathFormulaRendered( MathRenderer $Renderer, &$Result = null, $pid 
   ]:
   }
   git::clone { 'basex-backend':
-    remote    => 'https://github.com/physikerwelt/mathsearch-backend-basex',
-    directory => '/vagrant/mathsearch-backend-basex',
+    remote    => 'https://github.com/TU-Berlin/mathosphere',
+    directory => '/vagrant/mathosphere',
   }
   exec { 'build basex-backend':
     command => '/usr/bin/mvn install -Dgpg.skip=true',
-    cwd     => '/vagrant/mathsearch-backend-basex',
+    cwd     => '/vagrant/mathosphere',
     require => Git::Clone['basex-backend'],
-    creates => '/vagrant/mathsearch-backend-basex/target'
+    creates => '/vagrant/mathosphere/target'
   }
   apt::ppa { 'radu-hambasan/math-web-search': }
   package { [
     'mws'
   ]:
   }
+  $directories = split('/srv/mathsearch/mws-dump', '/')
+  each($directories) |$directory| {
+  if ! defined (File[$directory]) {
+    file { $directory: ensure => directory }
+    }
+  }
+  
   exec { 'index formulae':
     command => '/usr/bin/mws-config create -p 9090 -i /srv/mathsearch/mws-dump/ drmf -e xml && /usr/bin/mws-config enable drmf',
     require => Package['mws'],
-    creates => '/etc/init.d/mwsd_drmf'
+    creates => '/etc/init.d/mwsd_drmf',
+    require => File['/srv/mathsearch/mws-dump']
   }
 #TODO: Write startup script for basex
 #  exec { 'start basex formulae':
  #   command => '/usr/bin/mvn package  exec:java -Dpath=/srv/mathsearch/mws-dump/',
-#    cwd     => '/vagrant/mathsearch-backend-basex/restd',
+#    cwd     => '/vagrant/mathosphere/restd',
  #   require => [ Exec['build basex-backend'], Exec['index formulae'] ]
   #}
 }
