@@ -1,6 +1,6 @@
 # Warning
 
-This module is not work in progress and not guranteed to be stable.
+This module a work in progress and is not guranteed to be stable.
 Please do not use it at the moment.
 
 # Description
