@@ -35,6 +35,8 @@ class role::drmf {
         define("NS_FORMULA_TALK", 133);
         define("NS_CD", 134);
         define("NS_CD_TALK", 135);
+        define("NS_DEFINITION", 136);
+        define("NS_DEFINITION_TALK", 137);
 
         $wgExtraNamespaces =
             array(NS_SOURCE => "Source",
@@ -43,6 +45,8 @@ class role::drmf {
                   NS_FORMULA_TALK => "Formula_talk",
                   NS_CD => "CD",
                   NS_CD_TALK => "CD_talk",
+                  NS_DEFINITION => "Definition",
+                  NS_DEFINITION_TALK => "Definition_talk",
             );
 /**
  * Callback function that is called after a formula was rendered
