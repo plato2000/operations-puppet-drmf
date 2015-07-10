@@ -11,7 +11,9 @@ class role::drmf {
       'wgLaTeXMLServer'       => 'http://gw125.iu.xsede.org:8888',
       'wgMathDefaultLaTeXMLSetting[\'preload\'][]' => 'DLMFmath.sty',
       'wgCapitalLinks' => false,
-      'wgHooks[\'MathFormulaRendered\']' => [ 'wfOnMathFormulaRendered' ]
+      'wgHooks[\'MathFormulaRendered\']' => [ 'wfOnMathFormulaRendered' ],
+      'wgMetaNamespace' => 'Project',
+      'wgSitename' => 'DRMF'
     },
   }
 
