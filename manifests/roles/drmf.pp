@@ -58,11 +58,11 @@ class role::drmf {
  * @param int $eid
  * @return bool
  */
-function wfOnMathFormulaRendered( MathRenderer $Renderer, &$Result = null, $pid = 0, $eid = 0 ) {
-    $id = $Renderer->getID();
+function wfOnMathFormulaRendered( Parser $parser, MathRenderer $renderer, &$Result = null ) {
+    $id = $renderer->getID();
     if ( $id ) {
         $url = Title::newFromText( \'Formula:\' . $id )->getLocalURL();
-        $Result = preg_replace ("#</semantics>#", "<annotation encoding=\"OpenMath\" >" . $Renderer->getUserInputTex() . "</annotation>\n</semantics>", $Result );
+        $Result = preg_replace ("#</semantics>#", "<annotation encoding=\"OpenMath\" >" . $renderer->getUserInputTex() . "</annotation>\n</semantics>", $Result );
         $Result = \'<a href="\' . $url . \'" id="\' . $id . \'" style="color:inherit;">\' . $Result . \'</a>\';
     }
     return true;
