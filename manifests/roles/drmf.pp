@@ -139,6 +139,22 @@ function wfOnMathFormulaRendered( Parser $parser, MathRenderer $renderer, &$Resu
     require => [ Package['mws'], File['/srv/mathsearch/mws-dump'] ],
     creates => '/etc/init.d/mwsd_drmf'
   }
+
+  mediawiki::import::dump { 'drmf_main':
+    xml_dump           => '/vagrant/puppet/modules/drmf/files/drmf-initial-content.xml',
+    dump_sentinel_page => 'Testwiki:Main_Page',
+  }
+
+  file { "${::mediawiki::apache::docroot}/drmf_mediawiki_logo.png":
+    ensure => present,
+    source => '/vagrant/puppet/modules/drmf/files/DRMF-LOGO.jpg'
+  }
+
+  mediawiki::settings { 'drmf-vagrant logo':
+    values => {
+      wgLogo          => '/drmf_mediawiki_logo.png',
+    },
+  }
 #TODO: Write startup script for basex
 #  exec { 'start basex formulae':
  #   command => '/usr/bin/mvn package  exec:java -Dpath=/srv/mathsearch/mws-dump/',
