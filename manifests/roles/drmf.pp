@@ -140,9 +140,12 @@ function wfOnMathFormulaRendered( Parser $parser, MathRenderer $renderer, &$Resu
     creates => '/etc/init.d/mwsd_drmf'
   }
 
-  mediawiki::import::text { 'drmf main page':
-    page_title => 'Template:Main_Page',
-    source => 'puppet:///modules/drmf/main_page_template.wiki',
+  mediawiki::import::text { 'DRMF':
+    source => 'puppet:///modules/drmf/drmf.wiki',
+  }
+
+  mediawiki::import::text { 'MediaWiki:Mainpage':
+    source => 'puppet:///modules/drmf/mainpage.wiki',
   }
 
   file { "${::mediawiki::apache::docroot}/drmf_mediawiki_logo.png":
