@@ -86,7 +86,7 @@ function wfOnMathFormulaRendered( Parser $parser, MathRenderer $renderer, &$Resu
     }
   }
 
-  file { '/srv/vagrant/settings.d/DrmfUserWhitelist.txt':
+  file { '/vagrant/settings.d/DrmfUserWhitelist.txt':
     content => template( '/vagrant/puppet/modules/drmf/templates/DrmfUserWhitelist.txt.erb' ),
   }
 
@@ -101,9 +101,9 @@ function wfOnMathFormulaRendered( Parser $parser, MathRenderer $renderer, &$Resu
   mediawiki::extension{ 'BlockAndNuke':
     entrypoint => 'BlockandNuke.php',
     settings   => {
-      wgWhitelist => '/srv/vagrant/settings.d/DrmfUserWhitelist.txt'
+      wgWhitelist => '/vagrant/settings.d/DrmfUserWhitelist.txt'
     },
-    require    =>  File[ '/srv/vagrant/settings.d/DrmfUserWhitelist.txt' ],
+    require    =>  File[ '/vagrant/settings.d/DrmfUserWhitelist.txt' ],
   }
   mediawiki::extension{ 'DataTransfer': }
 #  mediawiki::extension { 'SemanticResultFormats': } (Seems to be broken at the moment)
