@@ -154,6 +154,7 @@ function wfOnMathFormulaRendered( Parser $parser, MathRenderer $renderer, &$Resu
     values => {
       wgLogo          => '/drmf_mediawiki_logo.png',
     },
+    priority => 60,
   }
 #TODO: Write startup script for basex
 #  exec { 'start basex formulae':
