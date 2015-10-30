@@ -1,0 +1,264 @@
+The '''NIST Digital Repository of Mathematical Formulae''' is designed for             
+a mathematically literate audience and should 
+
+# facilitate interaction among a [[community]] of mathematicians and scientists interested in [[wikipedia:compendia|compendia]] formulae data for '''orthogonal polynomials and special functions'''; 
+# be [[expandable]], allowing the input of new formulae from the literature; 
+# represent the context-free full [[semantic]] information concerning individual formulas; 
+# have a user friendly, consistent, and hyperlinkable viewpoint and authoring [[perspective]]; 
+# contain easily [[Special:MathSearch|searchable]] mathematics; and 
+# take advantage of modern [[MathML]] tools for easy to read, scalably rendered content driven mathematics. 
+
+For more information see [http://link.springer.com/chapter/10.1007%2F978-3-319-08434-3_30 Digital Repository of Mathematical Formulae] or [http://arxiv.org/abs/1404.6519 arXiv:1404.6519].
+
+== Sample Seeding Project Implementations ==
+
+<tt>DLMF</tt>:  [[Zeta and Related Functions]] 
+ 
+<tt>KLS</tt> and <tt>KLSadd</tt>: [[Orthogonal Polynomials]]
+
+== Useful Pages ==
+
+[[GitHub|How to Upload Your Project to GitHub]]
+
+[[Wikilabs|How to get access to Wikilabs/Wikitech]]
+
+[https://github.com/DRMF/DRMF/blob/master/doc/upload_and_connect.MD Upload and Connect]
+
+== Sample formula home pages with DLMF proofs given ==
+
+<div style="-moz-column-count:2; column-count:2;">
+* [[Formula:DLMF:25.2:E9]]
+* [[Formula:DLMF:25.5:E2]]
+* [[Formula:DLMF:25.5:E4]]
+* [[Formula:DLMF:25.5:E6]]
+* [[Formula:DLMF:25.8:E7]]
+* [[Formula:DLMF:25.8:E8]]
+* [[Formula:DLMF:25.11:E7]]
+* [[Formula:DLMF:25.11:E10]]
+* [[Formula:DLMF:25.11:E11]]
+* [[Formula:DLMF:25.11:E15]]
+* [[Formula:DLMF:25.11:E17]]
+* [[Formula:DLMF:25.11:E24]]
+* [[Formula:DLMF:25.11:E27]]
+* [[Formula:DLMF:25.11:E28]]
+* [[Formula:DLMF:25.11:E30]]
+* [[Formula:DLMF:25.11:E31]]
+* [[Formula:DLMF:25.11:E35]]
+</div>
+
+= Digital Repository of Mathematical Formulae =
+<div style="-moz-column-count:2; column-count:2;">
+# [[Algebraic and Analytic Methods]]
+# [[Asymptotic Approximations]]
+# [[Numerical Methods]]
+# [[Elementary Functions]]
+# [[Gamma Function]]
+# [[Exponential, Logarithmic, Sine, and Cosine Integrals]]
+# [[Error Functions, Dawson’s and Fresnel Integrals]]
+# [[Incomplete Gamma and Related Functions]]
+# [[Airy and Related Functions]]
+# [[Bessel Functions]]
+# [[Struve and Related Functions]]
+# [[Parabolic Cylinder Functions]]
+# [[Confluent Hypergeometric Functions]]
+# [[Legendre and Related Functions]]
+# [[Hypergeometric Function]]
+# [[Generalized Hypergeometric Functions and Meijer G-Function|Generalized Hypergeometric Functions and Meijer ''G''-Function]]
+# [[q-Hypergeometric and Related Functions|''q''-Hypergeometric and Related Functions]]
+# [[Orthogonal Polynomials]]
+# [[Elliptic Integrals]]
+# [[Theta Functions]]
+# [[Multidimensional Theta Functions]]
+# [[Jacobian Elliptic Functions]]
+# [[Weierstrass Elliptic and Modular Functions]]
+# [[Bernoulli and Euler Polynomials]]
+# [[Zeta and Related Functions]]
+# [[Combinatorial Analysis]]
+# [[Functions of Number Theory]]
+# [[Mathieu Functions and Hill’s Equation]]
+# [[Lamé Functions]]
+# [[Spheroidal Wave Functions]]
+# [[Heun Functions]]
+# [[Painlevé Transcendents]]
+# [[Coulomb Functions]]
+# [[3j,6j,9j Symbols|''3j,6j,9j'' Symbols]]
+# [[Functions of Matrix Argument]]
+# [[Integrals with Coalescing Saddles]]
+</div>
+
+== Definition Pages ==
+
+<div style="-moz-column-count:2; column-count:2;-webkit-column-count:2">
+* [[Definition:AffqKrawtchouk|AffqKrawtchouk]]
+* [[Definition:AlSalamCarlitzI|AlSalamCarlitzI]]
+* [[Definition:AlSalamCarlitzII|AlSalamCarlitzII]]
+* [[Definition:AlSalamIsmail|AlSalamIsmail]]
+* [[Definition:AntiDer|AntiDer]]
+* [[Definition:BesselPolyIIparam|BesselPolyIIparam]]
+* [[Definition:BesselPolyTheta|BesselPolyTheta]]
+* [[Definition:bigqJacobiIVparam|bigqJacobiIVparam]]
+* [[Definition:bigqLaguerre|bigqLaguerre]]
+* [[Definition:bigqLegendre|bigqLegendre]]
+* [[Definition:CiglerqChebyT|CiglerqChebyT]]
+* [[Definition:CiglerqChebyU|CiglerqChebyU]]
+* [[Definition:ctsbigqHermite|ctsbigqHermite]]
+* [[Definition:ctsdualqHahn|ctsdualqHahn]]
+* [[Definition:ctsqHahn|ctsqHahn]]
+* [[Definition:ctsqJacobi|ctsqJacobi]]
+* [[Definition:ctsqLaguerre|ctsqLaguerre]]
+* [[Definition:ctsqLegendre|ctsqLegendre]]
+* [[Definition:f|f]]
+* [[Definition:GenHermite|GenHermite]]
+* [[Definition:GottliebLaguerre|GottliebLaguerre]]
+* [[Definition:Int|Int]]
+* [[Definition:JacksonqBesselII|JacksonqBesselII]]
+* [[Definition:JacksonqBesselIII|JacksonqBesselIII]]
+* [[Definition:littleqLegendre|littleqLegendre]]
+* [[Definition:lrselection|lrselection]]
+* [[Definition:monicAlSalamCarlitzI|monicAlSalamCarlitzI]]
+* [[Definition:monicAlSalamCarlitzII|monicAlSalamCarlitzII]]
+* [[Definition:monicAlSalamChihara|monicAlSalamChihara]]
+* [[Definition:monicAskeyWilson|monicAskeyWilson]]
+* [[Definition:monicBesselPoly|monicBesselPoly]]
+* [[Definition:monicbigqJacobi|monicbigqJacobi]]
+* [[Definition:monicbigqLaguerre|monicbigqLaguerre]]
+* [[Definition:monicbigqLegendre|monicbigqLegendre]]
+* [[Definition:monicCharlier|monicCharlier]]
+* [[Definition:monicChebyT|monicChebyT]]
+* [[Definition:monicChebyU|monicChebyU]]
+* [[Definition:monicctsbigqHermite|monicctsbigqHermite]]
+* [[Definition:monicctsdualHahn|monicctsdualHahn]]
+* [[Definition:monicctsdualqHahn|monicctsdualqHahn]]
+* [[Definition:monicctsHahn|monicctsHahn]]
+* [[Definition:monicctsqHahn|monicctsqHahn]]
+* [[Definition:monicctsqHermite|monicctsqHermite]]
+* [[Definition:monicctsqJacobi|monicctsqJacobi]]
+* [[Definition:monicctsqLaguerre|monicctsqLaguerre]]
+* [[Definition:monicctsqLegendre|monicctsqLegendre]]
+* [[Definition:monicctsqUltra|monicctsqUltra]]
+* [[Definition:monicdiscrqHermiteI|monicdiscrqHermiteI]]
+* [[Definition:monicdiscrqHermiteII|monicdiscrqHermiteII]]
+* [[Definition:monicdualHahn|monicdualHahn]]
+* [[Definition:monicdualqHahn|monicdualqHahn]]
+* [[Definition:monicdualqKrawtchouk|monicdualqKrawtchouk]]
+* [[Definition:monicHahn|monicHahn]]
+* [[Definition:monicHermite|monicHermite]]
+* [[Definition:monicJacobi|monicJacobi]]
+* [[Definition:monicKrawtchouk|monicKrawtchouk]]
+* [[Definition:monicLaguerre|monicLaguerre]]
+* [[Definition:monicLegendrePoly|monicLegendrePoly]]
+* [[Definition:moniclittleqJacobi|moniclittleqJacobi]]
+* [[Definition:moniclittleqLaguerre|moniclittleqLaguerre]]
+* [[Definition:moniclittleqLegendre|moniclittleqLegendre]]
+* [[Definition:monicMeixner|monicMeixner]]
+* [[Definition:monicMeixnerPollaczek|monicMeixnerPollaczek]]
+* [[Definition:monicpseudoJacobi|monicpseudoJacobi]]
+* [[Definition:monicqBesselPoly|monicqBesselPoly]]
+* [[Definition:monicqCharlier|monicqCharlier]]
+* [[Definition:monicqKrawtchouk|monicqKrawtchouk]]
+* [[Definition:monicqLaguerre|monicqLaguerre]]
+* [[Definition:monicqMeixner|monicqMeixner]]
+* [[Definition:monicqMeixnerPollaczek|monicqMeixnerPollaczek]]
+* [[Definition:monicqRacah|monicqRacah]]
+* [[Definition:monicqtmqKrawtchouk|monicqtmqKrawtchouk]]
+* [[Definition:monicRacah|monicRacah]]
+* [[Definition:monicStieltjesWigert|monicStieltjesWigert]]
+* [[Definition:monicUltra|monicUltra]]
+* [[Definition:monicWilson|monicWilson]]
+* [[Definition:NeumannFactor|NeumannFactor]]
+* [[Definition:normctsdualHahnStilde|normctsdualHahnStilde]]
+* [[Definition:normctsHahnptilde|normctsHahnptilde]]
+* [[Definition:normJacobiR|normJacobiR]]
+* [[Definition:normWilsonWtilde|normWilsonWtilde]]
+* [[Definition:poly|poly]]
+* [[Definition:qBesselPoly|qBesselPoly]]
+* [[Definition:qCharlier|qCharlier]]
+* [[Definition:qDigamma|qDigamma]]
+* [[Definition:qHyperrWs|qHyperrWs]]
+* [[Definition:qExpKLS|qExpKLS]]
+* [[Definition:qexpKLS|qexpKLS]]
+* [[Definition:qcosKLS|qcosKLS]]
+* [[Definition:qMeixner|qMeixner]]
+* [[Definition:qKrawtchouk|qKrawtchouk]]
+* [[Definition:monicqHahn|monicqHahn]]
+* [[Definition:dualqHahn|dualqHahn]]
+* [[Definition:dualqKrawtchouk|dualqKrawtchouk]]
+* [[Definition:littleqLaguerre|littleqLaguerre]]
+* [[Definition:qsinKLS|qsinKLS]]
+* [[Definition:qSinKLS|qSinKLS]]
+* [[Definition:qCosKLS|qCosKLS]]
+* [[Definition:Wilson|Wilson]]
+* [[Definition:Racah|Racah]]
+* [[Definition:ctsdualHahn|ctsdualHahn]]
+* [[Definition:ctsHahn|ctsHahn]]
+* [[Definition:Hahn|Hahn]]
+* [[Definition:dualHahn|dualHahn]]
+* [[Definition:qRacah|qRacah]]
+* [[Definition:normctsdualqHahnptilde|normctsdualqHahnptilde]]
+* [[Definition:normctsqHahnptilde|normctsqHahnptilde]]
+* [[Definition:qHahn|qHahn]]
+* [[Definition:AlSalamChihara|AlSalamChihara]]
+* [[Definition:qinvAlSalamChihara|qinvAlSalamChihara]]
+* [[Definition:monicqinvAlSalamChihara|monicqinvAlSalamChihara]]
+* [[Definition:monicAffqKrawtchouk|monicAffqKrawtchouk]]
+* [[Definition:qMeixnerPollaczek|qMeixnerPollaczek]]
+* [[Definition:qtmqKrawtchouk|qtmqKrawtchouk]]
+* [[Definition:qLaguerre|qLaguerre]]
+* [[Definition:ctsqHermite|ctsqHermite]]
+* [[Definition:StieltjesWigert|StieltjesWigert]]
+* [[Definition:discrqHermiteI|discrqHermiteI]]
+* [[Definition:discrqHermiteII|discrqHermiteII]]
+* [[Definition:StieltjesConstants|StieltjesConstants]]
+</div>
+
+= Copyright =
+
+Pursuant to U.S. Code, Title 17, Chapter 1, Section 105:
+<blockquote>
+Copyright protection under this title is not available for any
+work of the United States Government, but the United States Government is not
+precluded from receiving and holding copyrights transferred to it by assignment,
+bequest, or otherwise.
+</blockquote>
+the National Institute of Standards and Technology (NIST), United States Department
+of Commerce, this website, a work of the United States Government, is in the public
+domain.
+
+= Disclaimer =
+
+While NIST has made every effort to ensure the accuracy and reliability of the
+information in the DLMF, the DLMF is expressly provided “AS-IS.” NIST makes NO WARRANTY
+OF ANY TYPE, including no warranties of merchantability or fitness for a particular
+purpose. NIST makes no warranties or representations as to the correctness, accuracy,
+or reliability of the DLMF. As a condition of using the DLMF, you explicitly release
+NIST from any and all liabilities for any damage of any type that may result from
+errors or omissions in the DLMF.
+
+Certain products, commercial and otherwise, are mentioned in the DLMF. These mentions
+are for informational purposes only, and do not imply recommendation or endorsement by NIST.
+
+= Privacy and Security Notice =
+
+The information we receive depends upon what you do when visiting our site. We collect
+no personally identifying information about you when you visit our site, unless you
+choose to provide that information to us.
+
+''If you visit our site to read or download information, we collect and store'' '''only'''
+''the following information:''
+
+* The name of the internet domain from which you accessed our site and the Internet Protocol (IP) address or host name which may or may not identify a specific computer.
+* The date and time you access our site.
+* The pages you visit.
+* The Internet address of the website from which you linked directly to our site.
+
+This information may be preserved in web access logs for an indefinite period of time.
+The data are used to prevent security breaches, insure the integrity of data on our
+servers, and summarize usage of our systems. We do not collect information through use
+of cookies. Other than the information described above which is collected from all
+visitors, we do not collect any information online from children.
+
+''If you identify yourself by sending an E-mail containing personal information:''
+
+* You also may decide to send us personally identifying information (for example, your mailing address) in an electronic mail message or web-based form requesting that information or products be mailed to you. Information collected in this manner is used solely for responding to your request unless noted in the specific web page where your request is made.
+
+'''Note:''' NIST is ''not'' responsible for the privacy practices employed by non-NIST sites that may link to or from the NIST website.
