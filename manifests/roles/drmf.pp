@@ -147,7 +147,7 @@ function wfOnMathFormulaRendered( Parser $parser, MathRenderer $renderer, &$Resu
 
   file { "${::mediawiki::apache::docroot}/drmf_mediawiki_logo.png":
     ensure => present,
-    source => '/vagrant/puppet/modules/drmf/files/DRMF-LOGO.jpg'
+    source => '/vagrant/puppet/modules/drmf/files/DRMF-LOGO.png'
   }
 
   mediawiki::settings { 'drmf-vagrant logo':
