@@ -114,7 +114,7 @@ function wfOnMathFormulaRendered( Parser $parser, MathRenderer $renderer, &$Resu
 
 ## BASEX Backend
   package { [
-    'openjdk-7-jdk',
+    'openjdk-8-jdk',
     'maven',
   ]:
   }
