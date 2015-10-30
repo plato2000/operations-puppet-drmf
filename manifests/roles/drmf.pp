@@ -7,8 +7,6 @@ class role::drmf {
     priority => 30,
     values   => {
       'wgMathDisableTexFilter' => true,
-      'wgUseMathJax'           => true, # enabeling MathJax as rendering option
-      'wgDefaultUserOptions[\'mathJax\']' => true, #setting MathJax as default rendering option (optional)
       'wgLaTeXMLServer'       => 'http://gw125.iu.xsede.org:8888',
       'wgMathDefaultLaTeXMLSetting[\'preload\'][]' => 'DLMFmath.sty',
       'wgCapitalLinks' => false,
