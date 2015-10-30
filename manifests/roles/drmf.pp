@@ -1,6 +1,7 @@
 # == Class: role::drmf ==
 class role::drmf {
   include role::mathsearch
+  include role::parserfunctions
 
   mediawiki::settings { 'drmf math':
     priority => 30,
@@ -104,7 +105,6 @@ function wfOnMathFormulaRendered( Parser $parser, MathRenderer $renderer, &$Resu
     },
     require    =>  File[ '/srv/vagrant/settings.d/DrmfUserWhitelist.txt' ],
   }
-  mediawiki::extension{ 'ParserFunctions': }
   mediawiki::extension{ 'DataTransfer': }
 #  mediawiki::extension { 'SemanticResultFormats': } (Seems to be broken at the moment)
 #mediawiki::extension{ 'DynamicPageList': }
