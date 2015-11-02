@@ -114,6 +114,7 @@ function wfOnMathFormulaRendered( Parser $parser, MathRenderer $renderer, &$Resu
   package { [
     'openjdk-8-jdk',
     'maven',
+    'tomcat7'
   ]:
   }
   git::clone { 'basex-backend':
