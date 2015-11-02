@@ -123,6 +123,7 @@ function wfOnMathFormulaRendered( Parser $parser, MathRenderer $renderer, &$Resu
   }
   exec { 'build basex-backend':
     command => '/usr/bin/mvn install -Dgpg.skip=true',
+    timeout => 1800,
     cwd     => '/vagrant/srv/mathosphere',
     require => Git::Clone['basex-backend'],
     creates => '/vagrant/srv/mathosphere/target'
