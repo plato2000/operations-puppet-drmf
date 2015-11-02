@@ -119,13 +119,13 @@ function wfOnMathFormulaRendered( Parser $parser, MathRenderer $renderer, &$Resu
   }
   git::clone { 'basex-backend':
     remote    => 'https://github.com/TU-Berlin/mathosphere',
-    directory => '/vagrant/mathosphere',
+    directory => '/vagrant/srv/mathosphere',
   }
   exec { 'build basex-backend':
     command => '/usr/bin/mvn install -Dgpg.skip=true',
-    cwd     => '/vagrant/mathosphere',
+    cwd     => '/vagrant/srv/mathosphere',
     require => Git::Clone['basex-backend'],
-    creates => '/vagrant/mathosphere/target'
+    creates => '/vagrant/srv/mathosphere/target'
   }
   apt::ppa { 'radu-hambasan/math-web-search': }
   package { [
