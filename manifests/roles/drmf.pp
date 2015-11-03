@@ -2,6 +2,7 @@
 class role::drmf {
   include role::mathsearch
   include role::parserfunctions
+  include drmf::mathosphere
 
   mediawiki::settings { 'drmf math':
     priority => 30,
@@ -110,24 +111,7 @@ function wfOnMathFormulaRendered( Parser $parser, MathRenderer $renderer, &$Resu
 #  require      => Mediawiki::Extension['DynamicPageList'],
 #}
 
-## BASEX Backend
-  package { [
-    'openjdk-8-jdk',
-    'maven',
-    'tomcat7'
-  ]:
-  }
-  git::clone { 'basex-backend':
-    remote    => 'https://github.com/TU-Berlin/mathosphere',
-    directory => '/vagrant/srv/mathosphere',
-  }
-  exec { 'build basex-backend':
-    command => '/usr/bin/mvn install -Dgpg.skip=true',
-    timeout => 1800,
-    cwd     => '/vagrant/srv/mathosphere',
-    require => Git::Clone['basex-backend'],
-    creates => '/vagrant/srv/mathosphere/target'
-  }
+
   apt::ppa { 'radu-hambasan/math-web-search': }
   package { [
     'mws'
