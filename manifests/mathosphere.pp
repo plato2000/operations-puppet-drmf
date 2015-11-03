@@ -1,11 +1,13 @@
 # == Class: drmf::mathosphere==
 class drmf::mathosphere(
-  $M2_HOME = '/usr/share/maven'
+  $M2_HOME = '/usr/share/maven',
+  $tomcatPort = 8081
 )  {
   package { [
     'openjdk-8-jdk',
     'maven',
-    'tomcat7'
+    'tomcat7',
+    'tomcat7-admin'
   ]:
   }
   git::clone { 'mathosphere':
