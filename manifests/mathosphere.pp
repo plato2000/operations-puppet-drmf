@@ -21,21 +21,28 @@ class drmf::mathosphere(
   }
 
   file { "$M2_HOME/conf/settings.xml":
-    ensure => present,
-    source => 'puppet:///modules/drmf/settings.xml',
+    ensure  => present,
+    source  => 'puppet:///modules/drmf/settings.xml',
     require => Package['maven'],
   }
 
   file { "/etc/tomcat7/tomcat-users.xml":
-    ensure => present,
-    source => 'puppet:///modules/drmf/tomcat-users.xml',
+    ensure  => present,
+    source  => 'puppet:///modules/drmf/tomcat-users.xml',
     require => Package['tomcat7'],
-    notify =>  Service['tomcat7']
+    notify  =>  Service['tomcat7']
   }
 
   service { 'tomcat7':
     ensure  => "running",
     enable  => "true",
     require => Package["tomcat7"],
+  }
+
+  exec { 'deploy mathosphere':
+    command => '/usr/bin/mvn clean install tomcat7:redeploy -Dgpg.skip=true ',
+    timeout => 1800,
+    cwd     => '/vagrant/srv/mathosphere/restd',
+    require => [File['mathosphere'],File["$M2_HOME/conf/settings.xml"]],
   }
 }
