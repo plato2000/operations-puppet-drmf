@@ -24,13 +24,11 @@ Select the version with 2 CPUs and assign a name that begins with drmf.
 
 Wait until the instance status is "ACTIVE" and puppet status is "OK".
 
-Now, click on configure and enable the puppet role ``role::labs::vagrant''.
+Now, click on configure and enable the puppet role `role::labs::mediawiki_vagrant`.
 
 Log into the instance and force a puppet and labs vagrant run via
-
 ```
 sudo puppet agent -tv
-sudo labs-vagrant provision
 ```
 This might take some time. In the meantime you can perform the optional step.
 
@@ -40,6 +38,12 @@ This might take some time. In the meantime you can perform the optional step.
   
 and clicking on [create proxy](https://wikitech.wikimedia.org/w/index.php?title=Special:NovaProxy&action=create&project=math&region=eqiad)
 
+Now log out and login again for convinience create a shortcut to the vagrant folder
+```
+sudo ln -s /srv/mediawiki-vagrant/ /vagrant
+cd /vagrant
+vagrant provision
+```
 Now, you are ready to enable the DRMF role. Follow the instructions below.
 
 In case of problebs visit 
@@ -66,13 +70,16 @@ Create a link to to the puppet role:
 
 ```bash
 ln -s /vagrant/puppet/modules/drmf/manifests/roles/drmf.pp /vagrant/puppet/modules/role/manifests/drmf.pp
+ln -s /vagrant/puppet/modules/drmf/manifests/roles/drmf.yaml /vagrant/puppet/modules/role/settings/drmf.yaml
 ```
 
 and enable the newly created drmf role via
-```
-labs-vagrant enable-role drmf && labs-vagrant provision
-
+```bash
+vagrant enable-role drmf && vagrant provision
 ```
 
 
 (PS: The last step with the symbolic link is temporary workaround.)
+
+See also
+[MediaWiki-Vagrant in Labs](https://wikitech.wikimedia.org/wiki/Help:MediaWiki-Vagrant_in_Labs).
