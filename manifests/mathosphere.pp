@@ -43,6 +43,6 @@ class drmf::mathosphere(
     command => '/usr/bin/mvn clean install tomcat7:redeploy -Dgpg.skip=true ',
     timeout => 1800,
     cwd     => '/vagrant/srv/mathosphere/restd',
-    require => [File['mathosphere'],File["$M2_HOME/conf/settings.xml"]],
+    require => [File["/etc/tomcat7/tomcat-users.xml"],File["$M2_HOME/conf/settings.xml"],Exec['build mathosphere']],
   }
 }
