@@ -8,7 +8,18 @@
             <id>mathosphere</id>
             <username>vagrant</username>
             <password>vagrant</password>
-            <url>http://localhost:<%= @tomcatPort %>/manager/text</url>
         </server>
     </servers>
+        <profiles>
+            <profile>
+                <id>mathosphere</id>
+                <activation>
+                    <activeByDefault>true</activeByDefault>
+                </activation>
+                <properties>
+                    <tomcat-server>mathosphere</tomcat-server>
+                    <tomcat-url>http://localhost:<%= @tomcatPort %>/manager/text</tomcat-url>
+                </properties>
+            </profile>
+        </profiles>
 </settings>
