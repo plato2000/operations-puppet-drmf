@@ -1,6 +1,6 @@
 # == Class: drmf::mathosphere==
 class drmf::mathosphere(
-  $M2_HOME = 'usr/bin/maven'
+  $M2_HOME = '/usr/bin/maven'
 )  {
 ## BASEX Backend
   package { [
@@ -27,4 +27,9 @@ class drmf::mathosphere(
     require => Package['maven'],
   }
 
+  file { "/etc/tomcat7/tomcat-users.xml":
+    ensure => present,
+    source => 'puppet:///modules/drmf/tomcat-users.xml',
+    require => Package['tomcat7'],
+  }
 }
