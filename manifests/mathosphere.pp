@@ -54,7 +54,7 @@ class drmf::mathosphere(
     command => '/usr/bin/mvn clean install tomcat7:redeploy -Dgpg.skip=true ',
     timeout => 1800,
     cwd     => '/vagrant/srv/mathosphere/restd',
-    creates => '/var/lib/tomcat7/webapps/rest.war',
+    creates => '/var/lib/tomcat7/webapps/restd.war',
     require => [
       File["/etc/tomcat7/tomcat-users.xml"],
       File["/etc/tomcat7/server.xml"],
