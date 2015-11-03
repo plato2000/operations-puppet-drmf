@@ -1,5 +1,6 @@
 # == Class: role::drmf ==
 class role::drmf {
+  include role::mathoid
   include role::mathsearch
   include role::parserfunctions
   include drmf::mathosphere
