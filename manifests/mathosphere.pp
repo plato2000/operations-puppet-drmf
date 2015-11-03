@@ -2,7 +2,6 @@
 class drmf::mathosphere(
   $M2_HOME = '/usr/bin/maven'
 )  {
-## BASEX Backend
   package { [
     'openjdk-8-jdk',
     'maven',
@@ -23,7 +22,7 @@ class drmf::mathosphere(
 
   file { "$M2_HOME/conf/settings.xml":
     ensure => present,
-    source => 'puppet:///modules/drmf/settngs.xml',
+    source => 'puppet:///modules/drmf/settings.xml',
     require => Package['maven'],
   }
 
@@ -31,5 +30,12 @@ class drmf::mathosphere(
     ensure => present,
     source => 'puppet:///modules/drmf/tomcat-users.xml',
     require => Package['tomcat7'],
+    notify =>  Service['tomcat7']
+  }
+
+  service { 'tomcat7':
+    ensure  => "running",
+    enable  => "true",
+    require => Package["tomcat7"],
   }
 }
