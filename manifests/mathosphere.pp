@@ -15,7 +15,8 @@ class drmf::mathosphere(
     directory => '/vagrant/srv/mathosphere',
   }
   exec { 'build mathosphere':
-    command => 'export MAVEN_OPTS="-Xmx1g" && /usr/bin/mvn clean install -Dgpg.skip=true -DskipTests=true -Dmaven.javadoc.skip=true -B -V',
+    command => '/usr/bin/mvn clean install -Dgpg.skip=true -DskipTests=true -Dmaven.javadoc.skip=true -B -V',
+    environment => ["MAVEN_OPTS='-Xmx1g'"],
     timeout => 1800,
     cwd     => '/vagrant/srv/mathosphere',
     require => Git::Clone['mathosphere'],
