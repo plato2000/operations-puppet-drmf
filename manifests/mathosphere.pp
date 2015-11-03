@@ -1,5 +1,7 @@
 # == Class: drmf::mathosphere==
-class drmf::mathosphere {
+class drmf::mathosphere(
+  $M2_HOME = 'usr/bin/maven'
+)  {
 ## BASEX Backend
   package { [
     'openjdk-8-jdk',
@@ -17,6 +19,12 @@ class drmf::mathosphere {
     cwd     => '/vagrant/srv/mathosphere',
     require => Git::Clone['mathosphere'],
     creates => '/vagrant/srv/mathosphere/target'
+  }
+
+  file { "$M2_HOME/conf/settings.xml":
+    ensure => present,
+    source => 'puppet:///modules/drmf/settngs.xml',
+    require => Package['maven'],
   }
 
 }
