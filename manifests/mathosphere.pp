@@ -32,7 +32,7 @@ class drmf::mathosphere(
 
   file { "/etc/tomcat7/tomcat-users.xml":
     ensure  => present,
-    content => template('drmf/tomcat-users.xml'),
+    content => template('drmf/tomcat-users.xml.erb'),
     require => Package['tomcat7'],
     notify  =>  Service['tomcat7']
   }
