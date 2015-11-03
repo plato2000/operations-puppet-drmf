@@ -3,5 +3,5 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://tomcat.apache.org/xml tomcat-users.xsd"
               version="1.0">
-  <user username="vagrant" password="vagrant" roles="admin-gui,manager-gui,manager-script" />
+  <user username="<%= @tomcatUser %>" password="<%= @tomcatPassword %>" roles="admin-gui,manager-gui,manager-script" />
 </tomcat-users>

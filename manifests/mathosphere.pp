@@ -1,7 +1,9 @@
 # == Class: drmf::mathosphere==
 class drmf::mathosphere(
   $M2_HOME = '/usr/share/maven',
-  $tomcatPort = 8081
+  $tomcatPort = 8081,
+  $tomcatUser = 'vagrant',
+  $tomcatPassword = 'vagrant'
 )  {
   package { [
     'openjdk-8-jdk',
@@ -30,7 +32,7 @@ class drmf::mathosphere(
 
   file { "/etc/tomcat7/tomcat-users.xml":
     ensure  => present,
-    content => 'puppet:///modules/drmf/tomcat-users.xml',
+    content => template('drmf/tomcat-users.xml'),
     require => Package['tomcat7'],
     notify  =>  Service['tomcat7']
   }
