@@ -1,6 +1,6 @@
 # == Class: drmf::mathosphere==
 class drmf::mathosphere(
-  $M2_HOME = '/usr/bin/maven'
+  $M2_HOME = '/usr/share/maven'
 )  {
   package { [
     'openjdk-8-jdk',
