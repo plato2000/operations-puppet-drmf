@@ -16,8 +16,7 @@ class drmf::mathosphere(
   }
   exec { 'build mathosphere':
     command => '/usr/bin/mvn clean install -Dgpg.skip=true -DskipTests=true -Dmaven.javadoc.skip=true -B -V',
-    environment => ['MAVEN_OPTS=-Xmx1g'],
-    timeout => 1800,
+    environment => ['MAVEN_OPTS=-Xmx256m'],
     cwd     => '/vagrant/srv/mathosphere',
     require => Git::Clone['mathosphere'],
     creates => '/vagrant/srv/mathosphere/target'
@@ -60,4 +59,5 @@ class drmf::mathosphere(
       Exec['build mathosphere']
     ],
   }
+
 }
