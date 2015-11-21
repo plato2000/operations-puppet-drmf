@@ -86,11 +86,14 @@ git clone git@github.com:TU-Berlin/mathosphere.git /vagrant/srv/mathosphere --re
 sudo chown mwvagrant mathosphere -R
 cd /vagrant
 vagrant ssh
-sudo apt-get install maven tomcat7 openjdk-8-jdk-y
+sudo apt-get install maven tomcat7  tomcat7-admin openjdk-8-jdk -y
 cd /vagrant/srv/mathosphere/
 sudo update-alternatives --config java
+export MAVEN_OPTS=-Xmx256m
 mvn clean install -DskipTests
 ```
+copy the following files:
+
 
 See also
 [MediaWiki-Vagrant in Labs](https://wikitech.wikimedia.org/wiki/Help:MediaWiki-Vagrant_in_Labs).
