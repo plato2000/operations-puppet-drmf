@@ -80,6 +80,17 @@ vagrant enable-role drmf && vagrant provision
 
 
 (PS: The last step with the symbolic link is temporary workaround.)
+## Manual installation of mathosphere
+```bash
+git clone git@github.com:TU-Berlin/mathosphere.git /vagrant/srv/mathosphere --recursive
+sudo chown mwvagrant mathosphere -R
+cd /vagrant
+vagrant ssh
+sudo apt-get install maven tomcat7 openjdk-8-jdk-y
+cd /vagrant/srv/mathosphere/
+sudo update-alternatives --config java
+mvn clean install -DskipTests
+```
 
 See also
 [MediaWiki-Vagrant in Labs](https://wikitech.wikimedia.org/wiki/Help:MediaWiki-Vagrant_in_Labs).
