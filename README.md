@@ -93,7 +93,12 @@ export MAVEN_OPTS=-Xmx256m
 mvn clean install -DskipTests
 ```
 copy the following files:
+* [/etc/default/tomcat7](templates/etc/default/tomcat7)
+* [/etc/tomcat7/tomcat-users.xml](templates/tomcat-users.xml.erb)
+* [/etc/tomcat7/server.xml](templates/server.xml.erb)
+* [~/.m2/settings.xml](templates/settings.xml.erb)
 
+Replace all <%= @XXX %> with appropriate values
 
 See also
 [MediaWiki-Vagrant in Labs](https://wikitech.wikimedia.org/wiki/Help:MediaWiki-Vagrant_in_Labs).
