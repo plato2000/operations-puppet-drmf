@@ -106,12 +106,6 @@ function wfOnMathFormulaRendered( Parser $parser, MathRenderer $renderer, &$Resu
     require    =>  File[ '/vagrant/settings.d/DrmfUserWhitelist.txt' ],
   }
   mediawiki::extension{ 'DataTransfer': }
-#  mediawiki::extension { 'SemanticResultFormats': } (Seems to be broken at the moment)
-#mediawiki::extension{ 'DynamicPageList': }
-#mediawiki::extension{ 'NukeDPL':
-#  require      => Mediawiki::Extension['DynamicPageList'],
-#}
-
 
   apt::ppa { 'radu-hambasan/math-web-search': }
   package { [
