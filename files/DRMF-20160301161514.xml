@@ -1,0 +1,148 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.10/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.10/ http://www.mediawiki.org/xml/export-0.10.xsd" version="0.10" xml:lang="en">
+  <siteinfo>
+    <sitename>DRMF</sitename>
+    <dbname>wiki</dbname>
+    <base>http://drmf.wmflabs.org/wiki/Main_Page</base>
+    <generator>MediaWiki 1.26alpha</generator>
+    <case>case-sensitive</case>
+    <namespaces>
+      <namespace key="-2" case="case-sensitive">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="case-sensitive" />
+      <namespace key="1" case="case-sensitive">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="case-sensitive">Project</namespace>
+      <namespace key="5" case="case-sensitive">Project talk</namespace>
+      <namespace key="6" case="case-sensitive">File</namespace>
+      <namespace key="7" case="case-sensitive">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="case-sensitive">Template</namespace>
+      <namespace key="11" case="case-sensitive">Template talk</namespace>
+      <namespace key="12" case="case-sensitive">Help</namespace>
+      <namespace key="13" case="case-sensitive">Help talk</namespace>
+      <namespace key="14" case="case-sensitive">Category</namespace>
+      <namespace key="15" case="case-sensitive">Category talk</namespace>
+      <namespace key="102" case="case-sensitive">Property</namespace>
+      <namespace key="103" case="case-sensitive">Property talk</namespace>
+      <namespace key="104" case="case-sensitive">Type</namespace>
+      <namespace key="105" case="case-sensitive">Type talk</namespace>
+      <namespace key="108" case="case-sensitive">Concept</namespace>
+      <namespace key="109" case="case-sensitive">Concept talk</namespace>
+      <namespace key="130" case="case-sensitive">Source</namespace>
+      <namespace key="131" case="case-sensitive">Source talk</namespace>
+      <namespace key="132" case="case-sensitive">Formula</namespace>
+      <namespace key="133" case="case-sensitive">Formula talk</namespace>
+      <namespace key="134" case="case-sensitive">CD</namespace>
+      <namespace key="135" case="case-sensitive">CD talk</namespace>
+      <namespace key="136" case="case-sensitive">Definition</namespace>
+      <namespace key="137" case="case-sensitive">Definition talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Template:headSection</title>
+    <ns>10</ns>
+    <id>3255</id>
+    <revision>
+      <id>48760</id>
+      <parentid>48759</parentid>
+      <timestamp>2015-07-16T11:14:39Z</timestamp>
+      <contributor>
+        <username>Admin</username>
+        <id>1</id>
+      </contributor>
+      <minor/>
+      <comment>1 revision imported: templates</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="1173">&lt;!--{{#ask: [[Section::&gt;&gt;{{getSection}}]]
+|format=list
+|limit=1
+|searchLabel=
+}}--&gt;
+&lt;!--
+{{FULLPAGENAME}}
+{{#show: {{FULLPAGENAME}}|?Chapter }}
+{{#show: {{FULLPAGENAME}}|?Section }}
+
+&lt;div id=\&quot;drmf_head\&quot;&gt;
+&lt;div id=\&quot;alignleft\&quot;&gt; &lt;&lt; [[&quot;+secLabel(sections[secCounter-1][0])+&quot;|&quot;+secLabel(sections[secCounter-1][0])+&quot;]] &lt;/div&gt;
+&lt;div id=\&quot;aligncenter\&quot;&gt; [[Orthogonal_Polynomials#&quot;+secLabel(sections[secCounter][0])+&quot;|&quot;+secLabel(sections[secCounter][0])+&quot;]] &lt;/div&gt;
+&lt;div id=\&quot;alignright\&quot;&gt; [[&quot;+secLabel(sections[(secCounter+1)%len(sections)][0])+&quot;|&quot;+secLabel(sections[(secCounter+1)%len(sections)][0])+&quot;]] &gt;&gt; &lt;/div&gt;\n&lt;/div&gt;--&gt;
+
+&lt;div id=&quot;drmf_head&quot;&gt;
+&lt;div id=&quot;alignleft&quot;&gt; &lt;&lt;
+{{#ask: [[Section::&lt;&lt;{{getSection}}]] [[Chapter::{{getChap}}]] |format=list |limit=1 |searchLabel=|sort=Section | order=desc | default=[[Orthogonal Polynomials|Orthogonal Polynomials]]}}&lt;/div&gt;
+&lt;div id=&quot;aligncenter&quot;&gt; [[Orthogonal_Polynomials#{{FULLPAGENAME}}|{{FULLPAGENAME}}]] &lt;/div&gt;
+&lt;div id=&quot;alignright&quot;&gt; {{#ask: [[Section::&gt;&gt;{{getSection}}]] [[Chapter::{{getChap}}]] |format=list |limit=1 |searchLabel=|sort=Section | order=asc | default=[[Orthogonal Polynomials|Orthogonal Polynomials]]}} &gt;&gt; &lt;/div&gt;
+&lt;/div&gt;</text>
+      <sha1>3dnb6yii05j0lvbsrcnr20udeszko1e</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Template:footSection</title>
+    <ns>10</ns>
+    <id>3252</id>
+    <revision>
+      <id>48752</id>
+      <parentid>48751</parentid>
+      <timestamp>2015-07-16T11:14:38Z</timestamp>
+      <contributor>
+        <username>Admin</username>
+        <id>1</id>
+      </contributor>
+      <minor/>
+      <comment>1 revision imported: templates</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="554">&lt;div id=&quot;drmf_foot&quot;&gt;
+&lt;div id=&quot;alignleft&quot;&gt; &lt;&lt;
+{{#ask: [[Section::&lt;&lt;{{getSection}}]] [[Chapter::{{getChap}}]] |format=list |limit=1 |searchLabel=|sort=Section | order=desc | default=[[Orthogonal Polynomials|Orthogonal Polynomials]]}}&lt;/div&gt;
+&lt;div id=&quot;aligncenter&quot;&gt; [[Orthogonal_Polynomials#{{FULLPAGENAME}}|{{FULLPAGENAME}}]] &lt;/div&gt;
+&lt;div id=&quot;alignright&quot;&gt; {{#ask: [[Section::&gt;&gt;{{getSection}}]] [[Chapter::{{getChap}}]] |format=list |limit=1 |searchLabel= |sort=Section | order=asc | default=[[Orthogonal Polynomials|Orthogonal Polynomials]]}} &gt;&gt; &lt;/div&gt;
+&lt;/div&gt;</text>
+      <sha1>9xyvrujciaqw46nwuaz15fea0385gid</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Template:getChap</title>
+    <ns>10</ns>
+    <id>3253</id>
+    <revision>
+      <id>48754</id>
+      <parentid>48753</parentid>
+      <timestamp>2015-07-16T11:14:38Z</timestamp>
+      <contributor>
+        <username>Admin</username>
+        <id>1</id>
+      </contributor>
+      <minor/>
+      <comment>1 revision imported: templates</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="36">{{#show: {{FULLPAGENAME}}|?Chapter}}</text>
+      <sha1>61intg2aiztzjnvq6lkn6u36ro6gaja</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Template:getSection</title>
+    <ns>10</ns>
+    <id>3254</id>
+    <revision>
+      <id>48756</id>
+      <parentid>48755</parentid>
+      <timestamp>2015-07-16T11:14:38Z</timestamp>
+      <contributor>
+        <username>Admin</username>
+        <id>1</id>
+      </contributor>
+      <minor/>
+      <comment>1 revision imported: templates</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="36">{{#show: {{FULLPAGENAME}}|?Section}}</text>
+      <sha1>8jyb4zujv3heprybkxscyqh45bsm2ar</sha1>
+    </revision>
+  </page>
+</mediawiki>
