@@ -130,6 +130,11 @@ function wfOnMathFormulaRendered( Parser $parser, MathRenderer $renderer, &$Resu
     source => 'puppet:///modules/drmf/mainpage.wiki',
   }
 
+  mediawiki::import::dump { 'import templates':
+    xml_dump           => '/vagrant/puppet/modules/drmf/files/drmf-templates.xml',
+    dump_sentinel_page => 'Template:headSection'
+  }
+  
   file { "${::mediawiki::apache::docroot}/drmf_mediawiki_logo.png":
     ensure => present,
     source => '/vagrant/puppet/modules/drmf/files/DRMF-LOGO.png'
