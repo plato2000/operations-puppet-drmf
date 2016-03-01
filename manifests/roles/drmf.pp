@@ -8,7 +8,7 @@ class role::drmf {
   mediawiki::settings { 'drmf math':
     priority => 30,
     values   => {
-      'wgMathDisableTexFilter' => true,
+      'wgMathDisableTexFilter' => 'always',
       'wgLaTeXMLServer'       => 'http://gw125.iu.xsede.org:8888',
       'wgMathDefaultLaTeXMLSetting[\'preload\'][]' => 'DLMFmath.sty',
       'wgCapitalLinks' => false,
