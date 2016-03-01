@@ -74,12 +74,12 @@ function wfOnMathFormulaRendered( Parser $parser, MathRenderer $renderer, &$Resu
         $smwgNamespacesWithSemanticLinks[NS_CD] = true;'],
     priority => 5
   }
-  mediawiki::extension { 'Lockdown':
-    settings => {
-      'wgNamespacePermissionLockdown[NS_SOURCE][\'read\']'=> ['user'],
-      'wgNamespacePermissionLockdown[NS_CD][\'read\']'    => ['user'],
-    }
-  }
+#  mediawiki::extension { 'Lockdown':
+#    settings => {
+#      'wgNamespacePermissionLockdown[NS_SOURCE][\'read\']'=> ['user'],
+#      'wgNamespacePermissionLockdown[NS_CD][\'read\']'    => ['user'],
+#    }
+#  }
   mediawiki::extension { 'FlaggedRevs':
     settings => {
       wgFlaggedRevsStatsAge => false,
