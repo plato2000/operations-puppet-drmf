@@ -15,7 +15,7 @@ class role::drmf {
       'wgHooks[\'MathFormulaPostRender\']' => [ 'wfOnMathFormulaRendered' ],
       'wgMetaNamespace' => 'Project',
       'wgSitename' => 'DRMF',
-      'wgDefaultUserOptions[\'math\'] => 'latexml'
+      'wgDefaultUserOptions[\'math\']' => 'latexml'
     },
   }
 
