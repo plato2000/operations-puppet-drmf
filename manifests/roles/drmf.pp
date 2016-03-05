@@ -7,16 +7,16 @@ class role::drmf {
 
   mediawiki::settings { 'drmf math':
     priority => 30,
-    values   => {
-      'wgMathDisableTexFilter' => 'always',
-      'wgLaTeXMLServer'       => 'http://gw125.iu.xsede.org:8888',
-      'wgMathDefaultLaTeXMLSetting[\'preload\'][]' => 'DLMFmath.sty',
-      'wgCapitalLinks' => false,
-      'wgHooks[\'MathFormulaPostRender\']' => [ 'wfOnMathFormulaRendered' ],
-      'wgMetaNamespace' => 'Project',
-      'wgSitename' => 'DRMF',
-      'wgDefaultUserOptions[\'math\']' => 'latexml'
-    },
+     values   => ['
+      $wgMathDisableTexFilter = \'always\';
+      $wgLaTeXMLServer        = \'http://gw125.iu.xsede.org:8888\';
+      $wgMathDefaultLaTeXMLSetting = array( \'format\' => \'xhtml\', \'whatsin\' => \'math\', \'whatsout\' => \'math\', \'pmml\',  \'cmml\',  \'mathtex\',  \'nodefaultresources\',  \'preload\' => array( \'LaTeX.pool\', \'article.cls\', \'amsmath.sty\', \'amsthm.sty\', \'amstext.sty\', \'amssymb.sty\', \'eucal.sty\', \'[dvipsnames]xcolor.sty\', \'url.sty\', \'hyperref.sty\', \'[ids]latexml.sty\', \'DLMFmath.sty\' ), \'linelength\' => 90 );
+      $wgCapitalLinks = false;
+      $wgHooks[\'MathFormulaPostRender\'] = array( \'wfOnMathFormulaRendered\');
+      $wgMetaNamespace = \'Project\';
+      $wgSitename = \'DRMF\';
+      $wgDefaultUserOptions[\'math\'] = \'latexml\';'
+    ],
   }
 
   mediawiki::settings { 'drmf security':
@@ -25,10 +25,7 @@ class role::drmf {
       'wgGroupPermissions[\'*\'][\'createaccount\']' => false,
     },
   }
-  mediawiki::settings { 'drmf remove texvc':
-    values   => ['$wgMathDefaultLaTeXMLSetting[\'preload\'] = array_diff( $wgMathDefaultLaTeXMLSetting[\'preload\'], [\'texvc\'] )'],
-    priority => 20
-  }
+
 
   mediawiki::settings { 'drmf Namespaces':
     values   => ['
