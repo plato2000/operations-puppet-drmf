@@ -26,6 +26,12 @@ class role::drmf {
     },
   }
 
+  mediawiki::settings { 'wikibase settings':
+    values => {
+#    TODO: Add import of the default Properties
+      'wgWBRepoSettings[\'formatterUrlProperty\']' => 'P24'
+    },
+  }
 
   mediawiki::settings { 'drmf Namespaces':
     values   => ['
