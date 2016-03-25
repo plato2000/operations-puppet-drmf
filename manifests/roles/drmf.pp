@@ -82,7 +82,7 @@ function wfOnMathFormulaRendered( Parser $parser, MathRenderer $renderer, &$Resu
       wgFlaggedRevsStatsAge => false,
       'wgGroupPermissions[\'sysop\'][\'review\']' => true, #allow administrators to review revisions
     },
-    wiki => 'wiki',
+    wiki => 'devwiki',
   }
 
   file { '/vagrant/settings.d/DrmfUserWhitelist.txt':
@@ -92,7 +92,7 @@ function wfOnMathFormulaRendered( Parser $parser, MathRenderer $renderer, &$Resu
   mediawiki::extension{ 'SemanticMediaWiki':
     composer     => true,
     needs_update => true,
-    wiki => 'wiki'
+    wiki => 'devwiki'
   }
 
 
@@ -106,7 +106,7 @@ function wfOnMathFormulaRendered( Parser $parser, MathRenderer $renderer, &$Resu
     require    =>  File[ '/vagrant/settings.d/DrmfUserWhitelist.txt' ],
   }
   mediawiki::extension{ 'DataTransfer': 
-      wiki => 'wiki'
+      wiki => 'devwiki'
   }
 
   apt::ppa { 'radu-hambasan/math-web-search': }
