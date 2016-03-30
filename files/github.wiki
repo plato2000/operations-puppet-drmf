@@ -1,0 +1,52 @@
+= SSH keys =
+* These steps only need to be done once
+* If you don't have a private-public ssh key authentication setup then generate a private key and upload it to GitHub
+* Run <code>ssh-keygen</code>
+* Display the public key by executing <code>cat ~/.ssh/id_rsa.pub</code>
+* Copy all of the code and paste it to your GitHub -> Settings -> SSH keys, namely https://github.com/settings/keys. Do this by hitting <code>New SSH key</code> button.
+
+= Establishing Connection =
+* These steps only need to be done once
+* The DRMF-Seeding-Project repository can be found at https://github.com/DRMF/DRMF-Seeding-Project
+* Fork the repository https://github.com/DRMF/DRMF-Seeding-Project#fork-destination-box into your personal GitHub name-space
+* On the right side of the webpage, find <code>SSH clone URL</code> and copy the url underneath
+* In terminal use <code>git clone URL_YOU_COPIED</code>
+* You should now have a directory with the name <code>DRMF-Seeding-Project</code>
+
+= Set up git username and email =
+* These steps only need to be done once
+* Make sure to do this before you do your first commit otherwise you will have problems
+* Run <code>git config --global user.name "YOUR NAME"</code> to set the author's name
+* Run <code>git config --global user.email "YOUR_EMAIL@example.com"</code> to set the author's email
+* Run <code>git config --global core.editor "vim"</code> to set the author's editor
+
+= Setup link to upstream =
+* These steps only need to be done once
+* cd into folder of commitment (e.g., <code>~/DRMF-Seeding-Project</code>)
+* Run <code>git remote add upstream git@github.com:DRMF/DRMF-Seeding-Project.git</code>
+* Run <code>git fetch upstream</code>
+
+= Changing Content =
+* cd into folder of commitment (e.g., <code>~/DRMF-Seeding-Project</code>)
+* <code>git pull upstream master</code> to check in modified files from the master branch
+* You can create any new directories for your project if necessary inside the downloaded GitHub directory
+* Files you are uploading to the GitHub repository must be in the directory - copy them over from elsewhere
+
+= Committing =
+* <code>git status</code> to tell you what you changed
+* <code>git add -A</code> to add everything which has been modified, created or deleted for the next commit
+* <code>git commit</code> this commits all files which have been added using <code>git add</code>
+* <code>git commit --amend</code> if you want to modify the commit message
+* <code>git push origin master</code>
+
+= Creating Pull Request =
+* Go to your repo and click on <code>New pull request</code> button
+* Confirm by clicking on <code>Create pull request</code> button, add comment if you like, and then click on <code>Create pull request</code> button
+* Wait until the tests have been passed
+* If there is a green button with <code>all checks have passed</code>, then ask someone to merge the pull request
+* Otherwise, follow the instructions to resolve the conflicts or failed tests
+* If you get stuck, then write a comment there
+
+= Merging Pull Request =
+* First review the changes by clicking on <code>Files changed</code>
+* If you are happy then click on <code>Conversation</code>, scroll down, then click on <code>Merge pull request</code> button
