@@ -137,6 +137,10 @@ function wfOnMathFormulaRendered( Parser $parser, MathRenderer $renderer, &$Resu
     source => 'puppet:///modules/drmf/mainpage.wiki',
   }
 
+  mediawiki::import::text { 'GitHub':
+    source => 'puppet:///modules/drmf/github.wiki',
+  }
+  
   mediawiki::import::dump { 'import templates':
     xml_dump           => '/vagrant/puppet/modules/drmf/files/drmf-templates.xml',
     dump_sentinel_page => 'Template:headSection'
