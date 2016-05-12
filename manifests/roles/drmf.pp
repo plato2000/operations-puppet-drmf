@@ -4,6 +4,7 @@ class role::drmf {
   include role::mathsearch
   include role::parserfunctions
   include drmf::mathosphere
+  include drmf::latexml
 
   mediawiki::settings { 'drmf math':
     priority => 30,
