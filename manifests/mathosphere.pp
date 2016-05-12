@@ -1,7 +1,7 @@
 # == Class: drmf::mathosphere==
 class drmf::mathosphere(
   $M2_HOME = '/usr/share/maven',
-  $tomcatPort = 8081,
+  $tomcatPort = 10043,
   $tomcatUser = 'vagrant',
   $tomcatPassword = 'vagrant'
 )  {
