@@ -1,15 +1,23 @@
 # == Class: drmf::latexml==
 class drmf::latexml(
-#   $M2_HOME = '/usr/share/maven',
    $latexmlPort = 9999,
    $customInputs = '/semantic-macros/DRMF',
-#   $tomcatPassword = 'vagrant'
 )  {
   package { [
-#     'apache2',
-#     'maven',
-#     'tomcat7',
-#     'tomcat7-admin'
+     'libarchive-zip-perl',
+     'libfile-which-perl',
+     'libimage-size-perl',
+     'libio-string-perl',
+     'libjson-xs-perl',
+     'libwww-perl',
+     'libparse-recdescent-perl',
+     'liburi-perl',
+     'libxml2',
+     'libxml-libxml-perl',
+     'libxslt1.1',
+     'libxml-libxslt-perl',
+     'perlmagick',
+     'make'
   ]:
   }
   file { '/vagrant/srv/latexml':
@@ -29,26 +37,37 @@ class drmf::latexml(
     directory => '/vagrant/srv/latexml/search',
   }
  
-
-  exec { 'latexml prerequisites':
-    command => '/usr/bin/apt-get install libarchive-zip-perl libfile-which-perl libimage-size-perl libio-string-perl libjson-xs-perl libwww-perl libparse-recdescent-perl liburi-perl libxml2 libxml-libxml-perl libxslt1.1 libxml-libxslt-perl texlive imagemagick perlmagick make'
-  }
-
-
   exec { 'install latexml':
     command => 'perl Makefile.PL && make && make install',
     timeout => 10000,
     cwd     => '/vagrant/srv/latexml/LaTeXML',
+    creates => '/vagrant/srv/latexml/LaTeXML/Makefile',
     require => [
 		Package["apache2"],
+	        Package['libarchive-zip-perl'],
+	        Package['libfile-which-perl'],
+   	        Package['libimage-size-perl'],
+	        Package['libio-string-perl'],
+	        Package['libjson-xs-perl'],
+	        Package['libwww-perl'],
+	        Package['libparse-recdescent-perl'],
+	        Package['liburi-perl'],
+	        Package['libxml2'],
+	        Package['libxml-libxml-perl'],
+	        Package['libxslt1.1'],
+	        Package['libxml-libxslt-perl'],
+	        Package['texlive'],
+	        Package['imagemagick'],
+	        Package['perlmagick'],
+	        Package['make'],
 		Git::Clone['latexml'],
-		Exec['latexml prerequisites']
 	       ]
   }
   exec { 'install ltxpsgi':
     command => 'perl Makefile.PL && make && make install',
     timeout => 10000,
     cwd     => '/vagrant/srv/latexml/ltxpsgi',
+    creates => '/vagrant/srv/latexml/ltxpsgi/Makefile',
     require => [
 		Package["apache2"],
 		Git::Clone['ltxpsgi'],
@@ -60,6 +79,7 @@ class drmf::latexml(
     command => 'perl Makefile.PL && make && make install',
     timeout => 10000,
     cwd     => '/vagrant/srv/latexml/search',
+    creates => '/vagrant/srv/latexml/search/Makefile',
     require => [
 		Package["apache2"],
 		Git::Clone['search'],
