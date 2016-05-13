@@ -96,7 +96,8 @@ class drmf::latexml(
 
 
   exec { 'deploy latexml':
-    command => 'a2ensite latexml && service apache2 restart',
+    notify  => Service['apache2'],
+    command => 'a2ensite latexml',
     timeout => 1800,
     cwd     => '/vagrant/srv/latexml',
     require => [
