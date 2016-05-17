@@ -41,9 +41,9 @@ class drmf::latexml(
     command => 'perl Makefile.PL && make && make install',
     timeout => 10000,
     cwd     => '/vagrant/srv/latexml/LaTeXML',
-    creates => '/vagrant/srv/latexml/LaTeXML/Makefile',
+    creates => '/usr/local/bin/latexml',
     require => [
-		Package["apache2"],
+		Package['apache2'],
 	        Package['libarchive-zip-perl'],
 	        Package['libfile-which-perl'],
    	        Package['libimage-size-perl'],
@@ -67,9 +67,9 @@ class drmf::latexml(
     command => 'perl Makefile.PL && make && make install',
     timeout => 10000,
     cwd     => '/vagrant/srv/latexml/ltxpsgi',
-    creates => '/vagrant/srv/latexml/ltxpsgi/Makefile',
+    creates => '/usr/local/bin/ltxpsgi',
     require => [
-		Package["apache2"],
+		Package['apache2'],
 		Git::Clone['ltxpsgi'],
 		Exec['install latexml']
 	       ]
@@ -79,16 +79,16 @@ class drmf::latexml(
     command => 'perl Makefile.PL && make && make install',
     timeout => 10000,
     cwd     => '/vagrant/srv/latexml/search',
-    creates => '/vagrant/srv/latexml/search/Makefile',
+    creates => '/usr/local/share/perl/5.18.2/LaTeXML/resources/XSLT/MWSquery.xsl',
     require => [
-		Package["apache2"],
+		Package['apache2'],
 		Git::Clone['search'],
 		Exec['install ltxpsgi']
 	       ]
   }
 
-  file { "/etc/apache2/sites-available/latexml.conf":
-    notify  => Service['apache2'],
+  apache::conf { 'latexml':
+    conf_type => 'sites',
     ensure  => present,
     content => template('drmf/latexml.conf.erb'),
     require => Exec['install search'],
@@ -97,11 +97,11 @@ class drmf::latexml(
 
   exec { 'deploy latexml':
     notify  => Service['apache2'],
-    command => 'a2ensite latexml',
+    command => 'a2ensite 50-latexml',
     timeout => 1800,
     cwd     => '/vagrant/srv/latexml',
     require => [
-      File["/etc/apache2/sites-available/latexml.conf"],
+      Apache::Conf['latexml'],
       Exec['install search']
     ],
   }
