@@ -3,7 +3,8 @@ class drmf::mathosphere(
   $M2_HOME = '/usr/share/maven',
   $tomcatPort = 10043,
   $tomcatUser = 'vagrant',
-  $tomcatPassword = 'vagrant'
+  $tomcatPassword = 'vagrant',
+  $openjdk_path = '/usr/lib/jvm/java-8-openjdk-amd64/'
 )  {
   package { [
     'openjdk-8-jdk',
@@ -28,6 +29,12 @@ class drmf::mathosphere(
     ensure  => present,
     content => template('drmf/settings.xml.erb'),
     require => Package['maven'],
+  }
+
+  file { "/etc/default/tomcat7":
+    ensure  => present,
+    content => template('drmf/tomcat7.erb'),
+    require => Package['openjdk-8-jdk']
   }
 
   file { "/etc/tomcat7/tomcat-users.xml":
@@ -59,6 +66,7 @@ class drmf::mathosphere(
       File["/etc/tomcat7/tomcat-users.xml"],
       File["/etc/tomcat7/server.xml"],
       File["$M2_HOME/conf/settings.xml"],
+      File["/etc/default/tomcat7"],
       Exec['build mathosphere']
     ],
   }
