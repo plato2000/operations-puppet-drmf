@@ -17,7 +17,9 @@ class drmf::latexml(
      'libxslt1.1',
      'libxml-libxslt-perl',
      'perlmagick',
-     'make'
+     'make',
+     'libplack-perl',
+     'libapache2-mod-perl2'
   ]:
   }
   file { '/vagrant/srv/latexml':
