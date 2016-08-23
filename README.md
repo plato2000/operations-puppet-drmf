@@ -39,9 +39,10 @@ This might take some time. In the meantime you can perform the optional step.
 and clicking on [create proxy](https://wikitech.wikimedia.org/w/index.php?title=Special:NovaProxy&action=create&project=math&region=eqiad)
 
 Now log out and login again for convinience create a shortcut to the vagrant folder
-```
+```bash
 sudo ln -s /srv/mediawiki-vagrant/ /vagrant
 cd /vagrant
+vagrant up
 vagrant provision
 ```
 Now, you are ready to enable the DRMF role. Follow the instructions below.
