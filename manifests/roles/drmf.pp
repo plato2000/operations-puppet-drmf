@@ -4,12 +4,13 @@ class role::drmf {
   include role::mathsearch
   include role::parserfunctions
   include drmf::mathosphere
+  include drmf::latexml
 
   mediawiki::settings { 'drmf math':
     priority => 30,
      values   => ['
       $wgMathDisableTexFilter = \'always\';
-      $wgLaTeXMLServer        = \'http://gw125.iu.xsede.org:8888\';
+      $wgLaTeXMLServer        = \'http://localhost:9999/\';
       $wgMathDefaultLaTeXMLSetting = array( \'format\' => \'xhtml\', \'whatsin\' => \'math\', \'whatsout\' => \'math\', \'pmml\',  \'cmml\',  \'mathtex\',  \'nodefaultresources\',  \'preload\' => array( \'LaTeX.pool\', \'article.cls\', \'amsmath.sty\', \'amsthm.sty\', \'amstext.sty\', \'amssymb.sty\', \'eucal.sty\', \'[dvipsnames]xcolor.sty\', \'url.sty\', \'hyperref.sty\', \'[ids]latexml.sty\', \'DLMFmath.sty\' ), \'linelength\' => 90 );
       $wgCapitalLinks = false;
       $wgHooks[\'MathFormulaPostRender\'] = array( \'wfOnMathFormulaRendered\');
