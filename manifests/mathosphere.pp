@@ -4,7 +4,8 @@ class drmf::mathosphere(
   $tomcatPort = 8081,
   $tomcatUser = 'admin',
   $tomcatPassword = 'admin',
-  $openjdk8_path = '/usr/lib/jvm/java-8-openjdk-amd64'
+  $openjdk8_path = '/usr/lib/jvm/java-8-openjdk-amd64',
+  $webappsDir = '/var/lib/tomcat7/webapps'
 )  {
   package { [
     'openjdk-8-jdk',
@@ -31,21 +32,35 @@ class drmf::mathosphere(
     require => Package['maven'],
   }
 
-  file { "/etc/default/tomcat7":
+  file { '/etc/default/tomcat7':
     ensure  => present,
     content => template('drmf/tomcat7.erb'),
     require => Package['openjdk-8-jdk'],
     notify  => Service['tomcat7']
   }
 
-  file { "/etc/tomcat7/tomcat-users.xml":
+  file { '/etc/tomcat7/tomcat-users.xml':
     ensure  => present,
     content => template('drmf/tomcat-users.xml.erb'),
     require => Package['tomcat7'],
     notify  =>  Service['tomcat7']
   }
+  
+  file { '/var/lib/tomcat7/webapps/ROOT':
+    ensure  => absent,
+    purge   => true,
+    force   => true,
+    recurse => true
+  }
 
-  file { "/etc/tomcat7/server.xml":
+  file { '/var/lib/tomcat7/webapps/restd.war':
+    path   => '/var/lib/tomcat7/webapps/restd.war',
+    ensure => present,
+    source => '/vagrant/srv/mathosphere/restd/target/restd-0.0.1-SNAPSHOT.war'
+  }
+    
+
+  file { '/etc/tomcat7/server.xml':
     ensure  => present,
     content => template('drmf/server.xml.erb'),
     require => Package['tomcat7'],
@@ -53,21 +68,21 @@ class drmf::mathosphere(
   }
 
   service { 'tomcat7':
-    ensure  => "running",
-    enable  => "true",
+    ensure  => 'running',
+    enable  => 'true',
     require => Package["tomcat7"],
   }
 
   exec { 'deploy mathosphere':
-    command => '/usr/bin/mvn install tomcat7:redeploy -Dgpg.skip=true ',
+    command => '/etc/init.d/tomcat7 restart',
     timeout => 1800,
     cwd     => '/vagrant/srv/mathosphere/restd',
-    creates => '/var/lib/tomcat7/webapps/restd.war',
     require => [
-      File["/etc/tomcat7/tomcat-users.xml"],
-      File["/etc/tomcat7/server.xml"],
+      File['/etc/tomcat7/tomcat-users.xml'],
+      File['/etc/tomcat7/server.xml'],
       File["$M2_HOME/conf/settings.xml"],
-      File["/etc/default/tomcat7"],
+      File['/etc/default/tomcat7'],
+      File['/var/lib/tomcat7/webapps/ROOT'],
       Exec['build mathosphere']
     ],
   }
